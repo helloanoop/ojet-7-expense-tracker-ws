@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "ws.expense",
+    "script": "npm run expense-server-with-oauth",
+    "env": {
+      "production": true
+    }
+  }, {
+    "name": "ws.oauth",
+    "script": "npm run oauth-server",
+    "env": {
+      "production": true
+    }
+  }]
+}

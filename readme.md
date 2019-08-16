@@ -20,6 +20,7 @@ npm run expense-server-with-oauth
 ### OAuth Usage
 ```bash
 # Registering a user
+# POST with application/x-www-form-urlencoded encoding
 POST to http://localhost:9000/register with {"username":"tom", "password":"jerry"}
 
 # Log In
@@ -29,7 +30,7 @@ POST to http://localhost:9000/login with username, password, grant_type, client_
 
 # Verify token
 # Ex: Authorization: Bearer d105b24fce14e48e6466aeab4be7378d86b6359f
-POST to http://localhost:9000/check with access token in header
+GET to http://localhost:9000/check with access token in header
 curl -H "Authorization: Bearer $ACCESS_TOKEN" http://localhost:9000/check
 ```
 
