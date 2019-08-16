@@ -1,6 +1,8 @@
 const feathers = require('@feathersjs/feathers');
 const express = require('@feathersjs/express');
 const cors = require('cors');
+const rp = require('request-promise');
+const argv = require('yargs').argv
 
 const NeDB = require('nedb');
 const service = require('feathers-nedb');
@@ -9,6 +11,7 @@ const db = new NeDB({
   filename: './db-data/databasse.nedb',
   autoload: true
 });
+const oauthEnabled = argv['oauth-secured'] ? true : false;
 
 // Create an Express compatible Feathers application instance.
 const app = express(feathers());
@@ -36,6 +39,29 @@ app.use(express.urlencoded({extended: true}));
 
 // Enable REST services
 app.configure(express.rest());
+
+if(oauthEnabled){
+  app.use(function(req, res, next) {
+    var options = {
+      method: 'GET',
+      uri: 'http://localhost:9000/check',
+      headers: {
+        'Authorization': req.headers.authorization,
+        'content-type': 'application/x-www-form-urlencoded'  // Is set automatically
+      }
+    };
+
+    rp(options)
+      .then(function (data) {
+        return next();
+      })
+      .catch(function (err) {
+        console.log(err);
+        return res.status(403).send("Forbidden");
+      });
+  });
+}
+
 
 // Connect to the db, create and register a Feathers service.
 app.use('/api/expense', service({

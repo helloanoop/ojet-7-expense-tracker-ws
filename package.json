@@ -3,17 +3,25 @@
   "version": "1.0.0",
   "description": "OJET 7 Expense Tracker WS",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/expense-server.js",
+    "expense-server": "node src/expense-server.js",
+    "expense-server-with-oauth": "node src/expense-server.js --oauth-secured=true",
+    "oauth-server": "node src/oauth-server.js"
   },
   "dependencies": {
-    "@feathersjs/express": "^1.3.1",
-    "@feathersjs/feathers": "^3.3.1",
-    "body-parser": "^1.9.0",
-    "cors": "^2.8.5",
-    "express": "^4.9.7",
-    "feathers-nedb": "^5.0.1",
-    "http-server": "^0.11.1",
-    "lodash": "^4.17.5",
-    "nedb": "^1.8.0"
+    "@feathersjs/errors": "^3.3.0",
+    "@feathersjs/express": "^1.2.0",
+    "@feathersjs/feathers": "^3.1.3",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "feathers-nedb": "^3.0.0",
+    "lodash": "^4.17.10",
+    "nedb": "^1.8.0",
+    "node-oauth2-server": "^2.4.0",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "uuid": "^3.3.2",
+    "yargs": "^13.3.0"
   }
 }
