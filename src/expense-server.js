@@ -8,7 +8,7 @@ const NeDB = require('nedb');
 const service = require('feathers-nedb');
 
 const db = new NeDB({
-  filename: './db-data/databasse.nedb',
+  filename: './db-data/database.nedb',
   autoload: true
 });
 const oauthEnabled = argv['oauth-secured'] ? true : false;
