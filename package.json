@@ -16,7 +16,7 @@
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "feathers-nedb": "^3.0.0",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.19",
     "nedb": "^1.8.0",
     "node-oauth2-server": "^2.4.0",
     "pm2": "^3.5.1",
